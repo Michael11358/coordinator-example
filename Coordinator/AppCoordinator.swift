@@ -16,6 +16,8 @@ final class AppCoordinator {
     init(window: UIWindow, navigation: UINavigationController) {
         self.window = window
         self.navigation = navigation
+        window.configure(with: navigation)
+        navigation.configure()
     }
 
     convenience init() {
@@ -23,8 +25,6 @@ final class AppCoordinator {
     }
 
     func start() {
-        window.configure(with: navigation)
-        navigation.configure()
         let login = LoginViewController()
         login.delegate = self
         navigation.pushViewController(login, animated: true)
